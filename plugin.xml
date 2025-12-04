@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plugin id="cordova-text-zoom-limiter" version="1.0.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <name>Text Zoom Limiter</name>
+    <description>Limita el zoom de texto del sistema en WebView para iOS y Android</description>
+    <author>Tu nombre</author>
+    <license>MIT</license>
+    <repo>https://github.com/tuname/cordova-text-zoom-limiter</repo>
+    
+    <!-- JavaScript - Disponible en window.TextZoomLimiter -->
+    <js-module src="www/TextZoomLimiter.js" name="TextZoomLimiter">
+        <clobbers target="window.TextZoomLimiter" />
+    </js-module>
+    
+    <!-- ANDROID -->
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="TextZoomPlugin">
+                <param name="android-package" value="org.apache.cordova.textzoomlimiter.TextZoomPlugin" />
+            </feature>
+        </config-file>
+        
+        <source-file src="src/android/TextZoomPlugin.java" 
+            target-dir="src/org/apache/cordova/textzoomlimiter" />
+    </platform>
+    
+    <!-- iOS -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="TextZoomPlugin">
+                <param name="ios-package" value="TextZoomPlugin" />
+            </feature>
+        </config-file>
+        
+        <source-file src="src/ios/TextZoomPlugin.swift" />
+    </platform>
+    
+</plugin>
